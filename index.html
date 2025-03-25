@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zenith CFO - Financial Health Check</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Financial Health Check for Your Business</h1>
+    <p>Get a score, a breakdown, and clear next steps — in less than 2 minutes.</p>
+    <form id="health-form">
+      <input type="number" name="revenue" placeholder="Annual Revenue" required />
+      <input type="number" name="expenses" placeholder="Annual Expenses" required />
+      <input type="number" name="debt" placeholder="Total Debt" required />
+      <input type="number" name="assets" placeholder="Total Assets" required />
+      <input type="number" name="cash" placeholder="Cash on Hand" required />
+      <input type="number" name="receivables" placeholder="Accounts Receivable" required />
+      <input type="number" name="payables" placeholder="Accounts Payable" required />
+      <input type="number" name="years" placeholder="Years in Operation" required />
+      <button type="submit">Assess My Business</button>
+    </form>
+    <div id="result" class="hidden"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
