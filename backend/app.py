@@ -1,7 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend', static_url_path='/frontend')
 CORS(app)
 
 @app.route('/analyze', methods=['POST'])
@@ -19,7 +20,6 @@ def analyze():
     if revenue == 0 or assets == 0:
         return jsonify({'score': 0, 'message': 'Revenue and assets must be greater than zero.'})
 
-    # Scoring logic
     profit_margin = max(0, (revenue - expenses) / revenue)
     liquidity = cash / (payables + 1)
     leverage = 1 - (debt / assets)
@@ -41,6 +41,10 @@ def analyze():
         'cta': "Let’s take your business to the next level.",
         'link': "https://www.zenithcfos.com/contact"
     })
+
+@app.route('/frontend/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('../frontend', filename)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
